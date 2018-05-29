@@ -23,6 +23,13 @@ public class Main {
 	public static void main(String[] args) {
 		System.out.printf("Launching Monitor on Java %s.%n%n", Runtime.version().toString());
 
+		if (!ModuleUtils.isModulePresent("monitor.observer.alpha") || !ModuleUtils.isModulePresent("monitor.observer.beta")) {
+			System.err.println("One of the needed modules is not present");
+			return;
+		} else {
+			System.out.println("Modules are present!");
+		}
+
 		Monitor monitor = createMonitor();
 		MonitorServer server = MonitorServer
 				.create(monitor::currentStatistics)
