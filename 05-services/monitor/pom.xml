@@ -20,16 +20,16 @@
 			<artifactId>observer</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
-		<dependency>
-			<groupId>monitor</groupId>
-			<artifactId>observer.alpha</artifactId>
-			<version>1.0-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>monitor</groupId>
-			<artifactId>observer.beta</artifactId>
-			<version>1.0-SNAPSHOT</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>monitor</groupId>-->
+			<!--<artifactId>observer.alpha</artifactId>-->
+			<!--<version>1.0-SNAPSHOT</version>-->
+		<!--</dependency>-->
+		<!--<dependency>-->
+			<!--<groupId>monitor</groupId>-->
+			<!--<artifactId>observer.beta</artifactId>-->
+			<!--<version>1.0-SNAPSHOT</version>-->
+		<!--</dependency>-->
 		<dependency>
 			<groupId>monitor</groupId>
 			<artifactId>persistence</artifactId>

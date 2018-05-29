@@ -13,7 +13,7 @@ public class AlphaServiceObserver implements ServiceObserver {
 
 	private final String serviceName;
 
-	AlphaServiceObserver(String serviceName) {
+	private AlphaServiceObserver(String serviceName) {
 		this.serviceName = serviceName;
 	}
 

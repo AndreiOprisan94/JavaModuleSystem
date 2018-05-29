@@ -13,7 +13,7 @@ public class BetaServiceObserver implements ServiceObserver {
 
 	private final String serviceName;
 
-	BetaServiceObserver(String serviceName) {
+	private BetaServiceObserver(String serviceName) {
 		this.serviceName = serviceName;
 	}
 

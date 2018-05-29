@@ -1,8 +1,7 @@
 package monitor;
 
 import monitor.observer.ServiceObserver;
-import monitor.observer.alpha.AlphaServiceObserver;
-import monitor.observer.beta.BetaServiceObserver;
+import monitor.observer.ServiceObserverFactory;
 import monitor.persistence.StatisticsRepository;
 import monitor.rest.MonitorServer;
 import monitor.statistics.Statistician;
@@ -10,6 +9,7 @@ import monitor.statistics.Statistics;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.ServiceLoader;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -51,9 +51,12 @@ public class Main {
 	}
 
 	private static Optional<ServiceObserver> createObserver(String serviceName) {
-		return AlphaServiceObserver.createIfAlphaService(serviceName)
-				.or(() -> BetaServiceObserver.createIfBetaService(serviceName))
-				.or(printfIfEmpty("No observer for %s found.%n", serviceName));
+		return ServiceLoader.load(ServiceObserverFactory.class)
+				.stream()
+				.map(ServiceLoader.Provider::get)
+				.map(factory -> factory.getService(serviceName))
+				.findFirst()
+				.map(Optional::get);
 	}
 
 	private static <T> Supplier<Optional<T>> printfIfEmpty(String message, String... args) {

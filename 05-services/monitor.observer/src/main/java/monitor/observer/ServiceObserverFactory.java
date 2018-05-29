@@ -1,5 +1,7 @@
 package monitor.observer;
 
+import java.util.Optional;
+
 public interface ServiceObserverFactory {
-    ServiceObserver getService(String serviceName);
+    Optional<ServiceObserver> getService(String serviceName);
 }
