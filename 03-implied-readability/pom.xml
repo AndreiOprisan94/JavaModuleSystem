@@ -23,6 +23,7 @@
 		<module>monitor.persistence</module>
 		<module>monitor.rest</module>
 		<module>monitor.statistics</module>
+		<module>monitor.observation</module>
 	</modules>
 
 </project>
