@@ -4,20 +4,17 @@ source ../executables.sh
 
 echo "--- COMPILATION & PACKAGING ---"
 
-echo " > creating clean directories"
-rm -rf classes
-mkdir classes
-rm -rf mods
-mkdir mods
+echo "Building module $1"
 
-echo " > multi-compiling modules"
-$JAVAC --module-path libs --module-source-path "./*/src/main/java" -d classes --module monitor
+MODULE_NAME=$1
 
-echo " > packaging modules"
-$JAR --create --file mods/monitor.observer.jar -C classes/monitor.observer .
-$JAR --create --file mods/monitor.observer.alpha.jar -C classes/monitor.observer.alpha .
-# $JAR --create --file mods/monitor.observer.beta.jar -C classes/monitor.observer.beta .
-$JAR --create --file mods/monitor.statistics.jar -C classes/monitor.statistics .
-$JAR --create --file mods/monitor.persistence.jar -C classes/monitor.persistence .
-$JAR --create --file mods/monitor.rest.jar -C classes/monitor.rest .
-$JAR --create --file mods/monitor.jar --main-class monitor.Main -C classes/monitor .
+echo " > compiling $MODULE_NAME"
+#$JAVAC --module-path libs --module-source-path "./*/src/main/java" -d classes --module monitor
+$JAVAC --module-source-path './*/src/main/java/' --module-path libs:jars -d classes --module $MODULE_NAME
+
+JAR_CHANGE_DIR=classes/$MODULE_NAME/
+JAR_RELATIVE_PATH_TO_BUILD=.
+
+echo " > packaging $MODULE_NAME"
+$JAR --create --file jars/${MODULE_NAME}.jar -C $JAR_CHANGE_DIR $JAR_RELATIVE_PATH_TO_BUILD
+

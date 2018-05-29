@@ -2,10 +2,5 @@
 set -e
 source ../executables.sh
 
-echo ""
-echo "--- LAUNCH ---"
-
-echo " > run monitor"
-echo ""
-
-$JAVA --module-path libs:mods --module monitor
+echo " > running monitor"
+$JAVA --module-path libs:jars --module monitor/monitor.Main
