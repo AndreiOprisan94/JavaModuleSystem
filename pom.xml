@@ -171,4 +171,19 @@
 		</profile>
 	</profiles>
 
+	<modules>
+		<module>00-class-path</module>
+		<module>01-single-module</module>
+		<module>02-multiple-modules</module>
+		<module>03-implied-readability</module>
+		<module>04-optional-dependencies</module>
+		<module>05-services</module>
+		<module>06-qualified-exports</module>
+		<module>07-open-packages-modules</module>
+		<module>08-command-line-arguments</module>
+		<module>09-unnamed-automatic-modules</module>
+		<module>10-jdeps</module>
+		<module>11-jlink</module>
+	</modules>
+
 </project>
